@@ -1,0 +1,271 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+/* Sessão do corpo do envelope */
+
+.envelope-container {
+  position: relative;
+}
+
+.envelope-body {
+  position: relative;
+  width: 20rem; /* 80 * 0.25rem = 20rem */
+  height: 13rem; /* 52 * 0.25rem = 13rem */
+  background-color: #940000; /* Use um tom envelope-body */
+  border-radius: 0.125rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.inner-shadow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 0.125rem;
+}
+
+.center-image {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 11;
+}
+
+.seal-image {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20rem;
+  height: 6.5rem;
+  overflow: visible;
+  z-index: 10;
+}
+
+.flap-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 13rem;
+  background-color: #DA3838; /* vermelho (equivalente a red-600) */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
+  transform-origin: 50% 0%;
+  transform: scaleY(1);
+}
+
+.flap-shape.open {
+  transform: scaleY(-1);
+}
+
+.flap-highlight {
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  font-family: 'Marck Script', cursive;
+  font-weight: 400;
+  font-size: 18pt;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
+}
+
+/* Imagens das rosas */
+
+.rose-content {
+    position: fixed;
+    bottom: 15rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.roses-image {
+    width: 20rem;
+}
+
+
+/* Sessão do convite */
+
+.invitation {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.invitation.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.invitation img {
+    width: 100%;
+    max-height: 100%;
+}
+
+/* Sessão da sugestão */
+
+.suggestion {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.suggestion.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.suggestion img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+/* Seção do Local */
+
+.local {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.local.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.local img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+}
+
+/* Mapa */
+
+.local-image-container img {
+  display: block;
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.map-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  border: 2px solid white;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+/* Painel de botões */
+
+.buttons-panel {
+  position: fixed;        /* fixa na viewport */
+  bottom: 15rem;          /* distância do fundo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  z-index: 105;           /* acima das rosas e do envelope */
+}
+
+.buttons-panel button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 10rem;
+}
+.button-image {
+  width: 100%;            /* garante que a imagem ocupe todo o botão */
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 2%;
+  background: transparent;
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+}
+
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  background: transparent;
+  color: white;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  z-index: 101;
+  transition: transform 0.2s;
+}
+
+.back-btn:hover {
+  transform: scale(1.2);
+}
+

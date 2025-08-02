@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Você está convidado(a)!</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="envelope-container" onclick="handleFlapClick()">
+        <!-- Retângulo principal (corpo do envelope) -->
+        <div class="envelope-body">
+          <!-- Sombra interna -->
+          <div class="inner-shadow"></div>
+
+          <!-- Imagem centralizada -->
+          <div class="center-image">
+            <img src="./img/selo_da_carta.png" alt="Selo" class="seal-image" />
+          </div>
+        </div>
+
+        <!-- Meio losango (aba superior) -->
+        <div class="envelope-flap">
+          <div class="flap-shape" id="flap">
+            <!-- Highlight na aba -->
+            <div class="flap-highlight"><p>Abra aqui!</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="rose-content">
+        <img src="./img/rosas.png" alt="Selo" class="roses-image" />
+      </div>
+
+      <!-- Convite -->
+
+      <div class="invitation">
+        <button class="close-btn" onclick="closeInvitation()">×</button>
+        <div>
+          <img src="./img/seu-convite.png" alt="Conteudo da carta" />
+        </div>
+        <div class="buttons-panel">
+          <button onclick="openLocal()">
+            <img src="./img/btn-local.png" alt="" />
+          </button>
+          <button onclick="openSuggestion()">
+            <img src="./img/btn-gift.png" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Sugestão de presente -->
+
+      <div class="suggestion">
+        <button class="back-btn" onclick="closeSuggestion()">←</button>
+        <div>
+          <img src="./img/gift_suggestion.png" alt="Conteudo da carta" />
+        </div>
+      </div>
+
+      <!-- Local da festa -->
+
+      <div class="local">
+        <button class="back-btn" onclick="closeLocal()">←</button>
+        <div class="local-image-container">
+          <img src="./img/local_party.png" alt="Local da festa" />
+          <div id="map" class="map-overlay"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let isOpen = false;
+      let leafletMap;
+
+      function handleFlapClick() {
+        const flap = document.getElementById("flap");
+        const invitation = document.querySelector(".invitation");
+
+        isOpen = !isOpen;
+
+        flap.classList.toggle("open");
+
+        if (isOpen) {
+          invitation.classList.add("show");
+        } else {
+          invitation.classList.remove("show");
+        }
+      }
+
+      function closeInvitation() {
+        const flap = document.getElementById("flap");
+        const invitation = document.querySelector(".invitation");
+        isOpen = false;
+        flap.classList.remove("open");
+        invitation.classList.remove("show");
+      }
+
+      function openSuggestion() {
+        const suggestion = document.querySelector(".suggestion");
+        suggestion.classList.add("show");
+      }
+
+      function closeSuggestion() {
+        const suggestion = document.querySelector(".suggestion");
+        suggestion.classList.remove("show");
+      }
+
+      function openLocal() {
+        const local = document.querySelector(".local");
+        local.classList.add("show");
+
+        // inicializa ou redimensiona o mapa após a div aparecer
+        setTimeout(() => {
+          if (!leafletMap) {
+            leafletMap = L.map("map", {
+              center: [-3.051171831298931, -59.92135129750051],
+              zoom: 15,
+            });
+
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+            }).addTo(leafletMap);
+
+            L.marker([-3.051171831298931, -59.92135129750051])
+              .addTo(leafletMap)
+              .bindPopup("Aqui será a festa!")
+              .openPopup();
+          } else {
+            // força o Leaflet a recalcular tamanho
+            leafletMap.invalidateSize();
+          }
+        }, 300);
+      }
+
+      function closeLocal() {
+        document.querySelector(".local").classList.remove("show");
+      }
+    </script>
+  </body>
+</html>
