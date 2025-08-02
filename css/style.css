@@ -95,7 +95,7 @@ body {
 
 .rose-content {
     position: fixed;
-    bottom: 15rem;
+    bottom: 5rem;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -118,7 +118,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 100;
-  opacity: 0;
+  opacity: 1;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
@@ -129,8 +129,10 @@ body {
 }
 
 .invitation img {
-    width: 100%;
-    max-height: 100%;
+  height: 60vh;
+  width: auto;
+  max-width: 90vw;
+  object-fit: contain;
 }
 
 /* Sessão da sugestão */
@@ -155,9 +157,10 @@ body {
 }
 
 .suggestion img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
+ height: 60vh;
+  width: auto;
+  max-width: 90vw;
+  object-fit: contain;
 }
 
 /* Seção do Local */
@@ -182,9 +185,10 @@ body {
 }
 
 .local img {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 10px;
+  height: 60vh;
+  width: auto;
+  max-width: 90vw;
+  object-fit: contain;
 }
 
 /* Mapa */
@@ -201,7 +205,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 250px;
+  width: 300px;
   height: 200px;
   transform: translate(-50%, -50%);
   border: 2px solid white;
@@ -212,26 +216,25 @@ body {
 /* Painel de botões */
 
 .buttons-panel {
-  position: fixed;        /* fixa na viewport */
-  bottom: 15rem;          /* distância do fundo */
+  position: fixed;
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 5px;
-  z-index: 105;           /* acima das rosas e do envelope */
+  align-items: center;
+  gap: 3rem;
+  z-index: 200;
+  bottom: 5rem;
 }
 
 .buttons-panel button {
   border: none;
-  background: none;
   cursor: pointer;
+  background: transparent;
+  z-index: 150;
   width: 10rem;
+  height: 20rem;
+outline: none;
 }
-.button-image {
-  width: 100%;            /* garante que a imagem ocupe todo o botão */
-  object-fit: contain;
-  transition: transform 0.2s;
-}
+
 
 
 .close-btn {
@@ -268,4 +271,3 @@ body {
 .back-btn:hover {
   transform: scale(1.2);
 }
-
