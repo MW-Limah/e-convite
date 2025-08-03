@@ -73,6 +73,10 @@
         <div>
           <img src="./img/gift_suggestion.png" alt="Conteudo da carta" />
         </div>
+        <button class="copy-pix-btn" onclick="copyPix()">
+          Copiar chave PIX
+        </button>
+        <p id="pix-msg" class="hidden">Chave pix copiada. Muito obrigado!</p>
       </div>
 
       <!-- Local da festa -->
@@ -89,6 +93,34 @@
     <script>
       let isOpen = false;
       let leafletMap;
+
+      function copyPix() {
+        const chave = "705.232.702-32";
+        const msg = document.getElementById("pix-msg");
+
+        navigator.clipboard
+          .writeText(chave)
+          .then(() => {
+            msg.classList.remove("hidden");
+            msg.classList.add("show");
+
+            setTimeout(() => {
+              msg.classList.remove("show");
+              msg.classList.add("hidden");
+            }, 3000); // esconde após 3 segundos
+          })
+          .catch((err) => {
+            console.error("Falha ao copiar:", err);
+            msg.textContent = "Erro ao copiar a chave PIX.";
+            msg.classList.remove("hidden");
+            msg.classList.add("show");
+
+            setTimeout(() => {
+              msg.classList.remove("show");
+              msg.classList.add("hidden");
+            }, 3000);
+          });
+      }
 
       function handleFlapClick() {
         const flap = document.getElementById("flap");
