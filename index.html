@@ -73,10 +73,12 @@
         <div>
           <img src="./img/gift_suggestion.png" alt="Conteudo da carta" />
         </div>
-        <button class="copy-pix-btn" onclick="copyPix()">
-          Copiar chave PIX
-        </button>
-        <p id="pix-msg" class="hidden">Chave pix copiada. Muito obrigado!</p>
+        <div class="pix-container">
+          <button class="copy-pix-btn" onclick="copyPix()">
+            Copiar chave PIX
+          </button>
+          <p id="pix-msg" class="hidden">Chave PIX copiada! Muito obrigado.</p>
+        </div>
       </div>
 
       <!-- Local da festa -->
@@ -107,11 +109,10 @@
             setTimeout(() => {
               msg.classList.remove("show");
               msg.classList.add("hidden");
-            }, 3000); // esconde após 3 segundos
+            }, 3000);
           })
-          .catch((err) => {
-            console.error("Falha ao copiar:", err);
-            msg.textContent = "Erro ao copiar a chave PIX.";
+          .catch(() => {
+            msg.textContent = "Erro ao copiar!";
             msg.classList.remove("hidden");
             msg.classList.add("show");
 
