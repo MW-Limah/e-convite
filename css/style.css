@@ -8,8 +8,34 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  text-align: center;
   min-height: 100vh;
   background-color: #f0f0f0;
+}
+
+.title {
+  position: absolute;
+  top: 11rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title h4 {
+  font-family: 'Glass Antiqua', cursive;
+  font-size: 22pt;
+  margin: 0;
+  font-weight: normal;
+}
+
+.title h2 {
+  font-weight: normal;
+  font-family: 'Marcellus', serif;
+  font-size: 25pt;
+  margin-top: 26px;
 }
 
 /* Sessão do corpo do envelope */
@@ -32,7 +58,7 @@ body {
 .inner-shadow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.1), transparent);
   border-radius: 0.125rem;
 }
 
@@ -87,7 +113,7 @@ body {
   font-weight: 400;
   font-size: 18pt;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
   clip-path: polygon(0% 0%, 100% 0%, 50% 50%);
 }
 
