@@ -21,37 +21,49 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   </head>
   <body>
-    <div class="title">
-      <h4>Despedida de</h4>
-      <h2>Sarah Hastemberg</h2>
-    </div>
     <div class="container">
-      <div class="envelope-container" onclick="handleFlapClick()">
-        <!-- Retângulo principal (corpo do envelope) -->
-        <div class="envelope-body">
-          <!-- Sombra interna -->
-          <div class="inner-shadow"></div>
+      <header class="space-1">
+        <div class="title">
+          <h4>Despedida de</h4>
+          <h2>Sarah Hastemberg</h2>
+        </div>
+      </header>
+      <main class="space-2">
+        <div class="envelope-container" onclick="handleFlapClick()">
+          <!-- Retângulo principal (corpo do envelope) -->
+          <div class="envelope-body">
+            <!-- Sombra interna -->
+            <div class="inner-shadow"></div>
 
-          <!-- Imagem centralizada -->
-          <div class="center-image">
-            <img src="./img/selo_da_carta.png" alt="Selo" class="seal-image" />
+            <!-- Imagem centralizada -->
+            <div class="center-image">
+              <img
+                src="./img/selo_da_carta.png"
+                alt="Selo"
+                class="seal-image"
+              />
+            </div>
+          </div>
+
+          <!-- Meio losango (aba superior) -->
+          <div class="envelope-flap">
+            <div class="flap-shape" id="flap">
+              <!-- Highlight na aba -->
+              <div class="flap-highlight"><p>Abra aqui!</p></div>
+            </div>
           </div>
         </div>
-
-        <!-- Meio losango (aba superior) -->
-        <div class="envelope-flap">
-          <div class="flap-shape" id="flap">
-            <!-- Highlight na aba -->
-            <div class="flap-highlight"><p>Abra aqui!</p></div>
-          </div>
+      </main>
+      <section class="space-3">
+        <div class="rose-content">
+          <img src="./img/rosas.png" alt="Selo" class="roses-image" />
         </div>
-      </div>
-      <div class="rose-content">
-        <img src="./img/rosas.png" alt="Selo" class="roses-image" />
-      </div>
-      <div class="waves">
-        <img src="./img/ondas.png" alt="" />
-      </div>
+      </section>
+      <footer class="space-4">
+        <div class="waves">
+          <img src="./img/ondas.png" alt="" />
+        </div>
+      </footer>
 
       <!-- Convite -->
 
